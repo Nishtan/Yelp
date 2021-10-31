@@ -1,0 +1,74 @@
+
+<% layout("layouts/boilerplate.ejs") %> 
+<div class="row">
+    <h1 class="text-center">
+        Edit Campground
+    </h1>
+    <div class="col-md-6 offset-md-3 ">
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" name="campground[title]" id="title" value="<%= campground.title %> " required>
+                 <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is a Required Field
+                    </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %> "  required>
+                 <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is a Required Field
+                    </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-file custom-file">
+                    <label for="formFileMultiple" class="form-label">Upload More Images</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">description</label>
+                <textarea class="form-control" type="description" name="campground[description]"
+                    id="description]"  required><%= campground.description %></textarea>
+                     <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is a Required Field
+                    </div>
+            </div>
+            <div class="mb-5">
+                <label class="form-label mb-3" for="price" >Campground Price</label>
+            <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">$</span>
+                <input id="price" name="campground[price]" type="text" class="form-control" placeholder="Price" aria-label="Username"
+                    aria-describedby="basic-addon1" value="<%= campground.price %> " required>
+                     <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is a Required Field
+                    </div>
+            </div>
+            </div>
+            <div class="mb-3">
+            <% campground.images.forEach(function (img,i) { %>
+                <img src="<%= img.thumbnail %>" class="img-thumbnail" alt=""> 
+            <div class="form-check-inline">
+                <label for="image-<%= i %>">Delete</label>
+                <input type="checkbox" id="image-<%= i %>" name="deleteImages[]" value="<%= img.filename %>">            </div>
+            <% }) %> 
+            </div>
+            <button class="mb-3 btn btn-success">Edit Campground</button>
+        </form>
+        <div class="mb-3">
+        <a class="btn btn-primary" href="/campgrounds">All campgrounds</a>
+    </div>
+    </div>
+</div>
