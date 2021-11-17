@@ -22,7 +22,6 @@ const helmet=require("helmet")
 const MongoStore = require('connect-mongo');
 const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'
 //'mongodb://localhost:27017/yelp-camp'
-console.log("hey");
 console.log(dbUrl);
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
