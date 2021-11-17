@@ -30,6 +30,7 @@ if (!campground.author._id.equals(req.user._id)) {
     req.flash("error", "You Do not have Permission")
    return res.redirect(`/campgrounds/${id}`)
 }
+
 next()
 }
 module.exports.isReview=async(req,res,next) =>

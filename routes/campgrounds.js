@@ -18,7 +18,4 @@ router.get("/:id", catchAsync(campgrounds.showCampground))
 .delete("/:id", isLoggedIn, catchAsync(campgrounds.deleteCampground))
 
 router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(campgrounds.renderEditForm))
-
-
-
 module.exports = router
